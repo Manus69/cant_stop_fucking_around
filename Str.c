@@ -110,15 +110,15 @@ Vec Str_split(Str str, char x)
 {
     Vec split;
     Slc slc;
-    Slc current;
+    Str current;
 
     split = Vec_new_(Str);
     slc = Str_as_Slc(str);
 
     while (Slc_empty(slc) == false)
     {
-        current = Slc_split_next(& slc, x);
-        Vec_push_(& split, current, Slc);
+        current = Str_from_Slc(Slc_split_next(& slc, x));
+        Vec_push_(& split, current, Str);
     }
 
     return split;

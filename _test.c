@@ -23,12 +23,27 @@ void test_Str()
     Str s = Str_vjoin("eat ", "my", " ass");
     dbg_Str(& s);
 
+    Vec v = Str_split(s, ' ');
+    Vec_map(v, dbg_Str);
+
+    Vec_erase(& v, (F) Str_del);
     Str_del(& s);
 
+}
+
+#include "io.h"
+void test_io()
+{
+    Vec v = io_read_txt_by_line("txt.txt");
+    // Vec_map(v, dbg_Str);
+    dbg_Str(Vec_last(v));
+
+    Vec_erase(& v, (F) Str_del);
 }
 //vec reserve
 int main()
 {
     // test_Vec(1 << 25);
-    test_Str();
+    // test_Str();
+    test_io();
 }

@@ -22,6 +22,7 @@ void *  Buf_get(Buf buf, idx k);
 void *  Buf_first(Buf buf);
 void *  Buf_at_index(Buf buf);
 void    Buf_del(Buf * buf);
+void    Buf_shift_index(Buf * buf, idx n);
 void    Buf_inject(Buf buf, idx k, const void * src, idx size);
 void    Buf_extend(Buf * buf, idx size);
 void    Buf_extend0(Buf * buf, idx size);

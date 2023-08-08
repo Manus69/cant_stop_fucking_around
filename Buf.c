@@ -31,6 +31,11 @@ idx Buf_index(Buf buf)
     return buf.index;
 }
 
+void Buf_shift_index(Buf * buf, idx n)
+{
+    buf->index += n;
+}
+
 idx Buf_capacity(Buf buf)
 {
     return Buf_size(buf) - buf.index;
