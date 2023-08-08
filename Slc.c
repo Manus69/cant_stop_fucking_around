@@ -27,6 +27,11 @@ idx Slc_size(Slc slc)
     return slc.size;
 }
 
+bool Slc_empty(Slc slc)
+{
+    return slc.size == 0;
+}
+
 void * Slc_get(Slc slc, idx k)
 {
     return slc.ptr + k;

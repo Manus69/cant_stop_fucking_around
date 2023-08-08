@@ -7,5 +7,6 @@
 #define nl_ printf("\n")
 
 void dbg_idx(void * x);
+void dbg_Str(void * str);
 
 #endif

@@ -31,7 +31,8 @@ View    Vec_view(Vec vec, idx k, idx len);
 View    Vec_as_View(Vec vec);
 void    Vec_map(Vec vec, F f);
 void    Vec_del(Vec * vec);
-void    Vec_push(Vec * vec, const void * item, Put put);
+void    Vec_erase(Vec * vec, F f);
+void    Vec_push(Vec * restrict vec, const void * restrict item, Put put);
 
 
 #endif

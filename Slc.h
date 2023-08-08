@@ -2,6 +2,9 @@
 #define SLC_H
 
 #include "def.h"
+#include "mem_macro.h"
+
+#include <stdbool.h>
 
 typedef struct Slc Slc;
 
@@ -11,6 +14,8 @@ struct Slc
     idx     size;
 };
 
+mem_put_gen(Slc)
+
 Slc     Slc_ctr(void * ptr, idx size);
 Slc     Slc_from_cstr_len(const char * cstr, idx len);
 Slc     Slc_from_cstr(const char * cstr);
@@ -19,6 +24,7 @@ void *  Slc_get(Slc slc, idx k);
 void *  Slc_first(Slc slc);
 void    Slc_shift(Slc * slc, idx n);
 void    Slc_inject(Slc slc, idx k, const void * src, idx size);
+bool    Slc_empty(Slc slc);
 Slc     Slc_slice(Slc slc, idx k, idx size);
 Slc     Slc_chop_front(Slc * slc, idx size);
 Slc     Slc_chop_all(Slc * slc);

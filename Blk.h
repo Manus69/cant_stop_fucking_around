@@ -22,5 +22,6 @@ Slc     Blk_as_Slc(Blk blk);
 void    Blk_inject(Blk blk, idx k, const void * src, idx size);
 void    Blk_extend(Blk * blk, idx size);
 void    Blk_extend0(Blk * blk, idx size);
+void    Blk_set_byte(Blk blk, idx k, byte x);
 
 #endif

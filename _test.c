@@ -17,7 +17,18 @@ void test_Vec(idx n)
     Vec_del(& v);
 }
 
+#include "Str.h"
+void test_Str()
+{
+    Str s = Str_vjoin("eat ", "my", " ass");
+    dbg_Str(& s);
+
+    Str_del(& s);
+
+}
+//vec reserve
 int main()
 {
-    test_Vec(1 << 25);
+    // test_Vec(1 << 25);
+    test_Str();
 }

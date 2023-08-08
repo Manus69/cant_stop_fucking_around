@@ -83,7 +83,13 @@ void Vec_map(Vec vec, F f)
     return View_map(Vec_as_View(vec), f);
 }
 
-void Vec_push(Vec * vec, const void * item, Put put)
+void Vec_erase(Vec * vec, F f)
+{
+    Vec_map(* vec, f);
+    Vec_del(vec);
+}
+
+void Vec_push(Vec * restrict vec, const void * restrict item, Put put)
 {
     Buf_push_item(& vec->buf, item, vec->item_size, put);
 }

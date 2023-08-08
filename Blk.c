@@ -54,6 +54,11 @@ void Blk_inject(Blk blk, idx k, const void * src, idx size)
     memcpy(Blk_get(blk, k), src, size);
 }
 
+void Blk_set_byte(Blk blk, idx k, byte x)
+{
+    deref_(byte) Blk_get(blk, k) = x;
+}
+
 void Blk_extend(Blk * blk, idx size)
 {
     blk->size = mem_extend(& blk->data, blk->size, size);

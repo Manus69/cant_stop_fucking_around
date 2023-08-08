@@ -46,6 +46,11 @@ void * Buf_first(Buf buf)
     return Buf_get(buf, 0);
 }
 
+void * Buf_at_index(Buf buf)
+{
+    return Buf_get(buf, buf.index);
+}
+
 Slc Buf_slice(Buf buf, idx k, idx size)
 {
     return Slc_ctr(Buf_get(buf, k), size);
@@ -59,6 +64,11 @@ Slc Buf_as_Slc(Buf buf)
 void Buf_inject(Buf buf, idx k, const void * src, idx size)
 {
     Blk_inject(buf.blk, k, src, size);
+}
+
+void Buf_set_byte(Buf buf, idx k, byte x)
+{
+    Blk_set_byte(buf.blk, k, x);
 }
 
 void Buf_extend(Buf * buf, idx size)
@@ -78,7 +88,7 @@ void Buf_reserve(Buf * buf, idx size)
 
 void Buf_push(Buf * restrict buf, const void * restrict src, idx size)
 {
-    if (unlikely_(Buf_capacity(* buf) < size)) Buf_extend(buf, size);
+    if (unlikely_(Buf_capacity(* buf) <= size)) Buf_extend(buf, size);
 
     Buf_inject(* buf, buf->index, src, size);
     buf->index += size;
@@ -86,7 +96,7 @@ void Buf_push(Buf * restrict buf, const void * restrict src, idx size)
 
 void Buf_push_item(Buf * restrict buf, const void * restrict item, idx size, Put put)
 {
-    if (unlikely_(Buf_capacity(* buf) < size)) Buf_extend(buf, size);
+    if (unlikely_(Buf_capacity(* buf) <= size)) Buf_extend(buf, size);
 
     put(Buf_get(* buf, buf->index), item);
     buf->index += size;
