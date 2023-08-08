@@ -27,7 +27,7 @@ void * View_get(View view, idx k)
 
 void * View_first(View view)
 {
-    View_get(view, 0);
+    return View_get(view, 0);
 }
 
 void * View_last(View view)

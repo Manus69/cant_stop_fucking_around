@@ -1,4 +1,5 @@
 #include "Slc.h"
+#include "macro.h"
 
 #include <string.h>
 
@@ -76,7 +77,7 @@ idx Slc_find(Slc slc, byte x)
 {
     for (idx k = 0; k < slc.size; k ++)
     {
-        if (Slc_get(slc, k) == x) return k;
+        if (deref_(byte) Slc_get(slc, k) == x) return k;
     }
 
     return NO_IDX;
