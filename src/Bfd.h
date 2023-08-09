@@ -7,7 +7,7 @@ typedef struct Bfd Bfd;
 
 struct Bfd
 {
-    Buf buf;
+    Blk blk;
 };
 
 #endif

@@ -37,7 +37,7 @@ idx mem_extend0(void ** ptr, idx size, idx extra_size)
     idx new_size;
 
     new_size = mem_extend(ptr, size, extra_size);
-    memset(* ptr + size, 0, extra_size);
+    memset(* ptr + size, 0, new_size - size);
 
     return new_size;    
 }

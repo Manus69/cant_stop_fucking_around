@@ -68,3 +68,8 @@ void Blk_extend0(Blk * blk, idx size)
 {
     blk->size = mem_extend0(& blk->data, blk->size, size);
 }
+
+void Blk_resize(Blk * blk, idx size)
+{
+    blk->size = mem_resize(& blk->data, size);
+}
