@@ -42,3 +42,22 @@ Vec io_read_txt_by_line(const char * name)
 
     return lines;
 }
+
+idx io_create_file(const char * name)
+{
+    return creat(name, 0777);
+}
+
+idx io_write_fd(Buf buf, int fd)
+{
+    return write(fd, Buf_first(buf), Buf_index(buf));
+}
+
+idx io_write(Buf buf, const char * name)
+{
+    int fd;
+
+    if ((fd = open(name, O_TRUNC | O_RDWR)) < 0) return fd;
+
+    return io_write_fd(buf, fd);
+}

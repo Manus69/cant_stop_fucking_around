@@ -106,6 +106,11 @@ Slc Str_as_Slc(Str str)
     return Str_slice(str, 0, Str_len(str));
 }
 
+Buf Str_as_Buf(Str str)
+{
+    return str.buf;
+}
+
 Vec Str_split(Str str, char x)
 {
     Vec split;

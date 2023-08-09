@@ -74,13 +74,23 @@ void test_io2()
     Vec_erase(& v, (F) Str_del);
 }
 
+void test_io3()
+{
+    Str s = Str_vjoin("go", "fuck", "yourself", "\n\n\n", "retard", " !");
+    io_create_file(FILE);
+    idx status = io_write(Str_as_Buf(s), FILE);
+
+    dbg_idx(& status);
+    Str_del(& s);
+}
+
 //rng
 int main()
 {
     // test_Vec(1 << 25);
     // test_Str();
     // test_io();
-    test_sort(1 << 25);
+    // test_sort(1 << 25);
     // test_io2();
-
+    test_io3();
 }
