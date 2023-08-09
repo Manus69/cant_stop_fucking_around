@@ -58,16 +58,31 @@ void test_sort(idx n)
     // sort_merge(w, cmp_idx, put_idx);
 
     sort_quick(w, cmp_idx, swap_idx, put_idx);
-    // View_map(w, dbg_idx);
+    View_map(w, dbg_idx);
     dbg_idx(View_last(w));
 
     Vec_del(& v);
 }
 
+void test_sort2()
+{
+    Str s = Str_from_cstr("3 2 1  22");
+    Vec v = Str_split(s, ' ');
+    sort_(v, Vec, Str);
+
+    Vec_map(v, dbg_Str);
+    Vec_erase(& v, (F) Str_del);
+    Str_del(& s);
+}
+
 void test_io2()
 {
     Vec v = io_read_txt_by_line(FILE);
-    sort_(v, Vec, idx);
+    sort_(v, Vec, Str);
+
+    // View w = Vec_as_View(v);
+    // sort_insert(w, cmp_Str, put_Str);
+    // sort_merge(w, cmp_Str, put_Str);
 
     // Vec_map(v, dbg_Str);
     dbg_Str(Vec_last(v));
@@ -89,8 +104,10 @@ int main()
 {
     // test_Vec(1 << 25);
     // test_Str();
-    // test_io();
     // test_sort(1 << 25);
-    // test_io2();
-    test_io3();
+    // test_sort2();
+
+    // test_io();
+    test_io2();
+    // test_io3();
 }
