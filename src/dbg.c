@@ -10,4 +10,5 @@ void dbg_idx(void * x)
 void dbg_Str(void * str)
 {
     printf("'%s'", Str_cstr(deref_(Str) str));
+    nl_;
 }

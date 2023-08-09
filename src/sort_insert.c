@@ -1,5 +1,6 @@
 #include "sort.h"
 #include "mem.h"
+#include "dbg.h"
 
 void sort_insert(View view, Cmp cmp, Put put)
 {
@@ -12,7 +13,7 @@ void sort_insert(View view, Cmp cmp, Put put)
         put(buff, View_get(view, sorted));
         for (current = sorted - 1; current >= 0; current --)
         {
-            if (cmp(buff, View_get(view, current)) == 0) break ;
+            if (cmp(View_get(view, current), buff) <= 0) break ;
             put(View_get(view, current + 1), View_get(view, current));
         }
 

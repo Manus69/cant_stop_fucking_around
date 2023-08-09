@@ -65,6 +65,11 @@ View View_view(View view, idx k, idx len)
     return View_from_ptr(View_get(view, k), len, view.item_size);
 }
 
+View View_as_View(View view)
+{
+    return View_view(view, 0, View_len(view));
+}
+
 View View_chop_front(View * view, idx len)
 {
     return View_ctr(Slc_chop_front(& view->slc, len * view->item_size), view->item_size);

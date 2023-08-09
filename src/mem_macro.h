@@ -23,4 +23,8 @@ static inline idx cmp_##type(const void * lhs, const void * rhs) \
     deref_(type) rhs = _lhs; \
 }
 
+#define mem_swap_gen(type) \
+__attribute__ ((hot, always_inline)) \
+static inline void swap_##type(void * lhs, void * rhs) {mem_swap_(lhs, rhs, type);}
+
 #endif

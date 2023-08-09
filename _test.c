@@ -3,6 +3,7 @@
 
 mem_put_gen(idx)
 mem_cmp_gen(idx)
+mem_swap_gen(idx)
 
 #include "Vec.h"
 void test_Vec(idx n)
@@ -33,9 +34,10 @@ void test_Str()
 }
 
 #include "io.h"
+#define FILE "txt.txt"
 void test_io()
 {
-    Vec v = io_read_txt_by_line("txt.txt");
+    Vec v = io_read_txt_by_line(FILE);
     // Vec_map(v, dbg_Str);
     dbg_Str(Vec_last(v));
 
@@ -52,20 +54,30 @@ void test_sort(idx n)
     }
 
     View w = Vec_as_View(v);
-    // sort_insert(w, cmp_idx, put_idx);
-    sort_merge(w, cmp_idx, put_idx);
-    // View_map(w, dbg_idx);
-    dbg_idx(View_last(w));
+    sort_insert(w, cmp_idx, put_idx);
+    // sort_merge(w, cmp_idx, put_idx);
+    View_map(w, dbg_idx);
+    // dbg_idx(View_last(w));
 
     Vec_del(& v);
 }
 
-//vec reserve
-//src folder
+void test_io2()
+{
+    Vec v = io_read_txt_by_line(FILE);
+    sort_(v, Vec, idx);
+
+    // Vec_map(v, dbg_Str);
+    dbg_Str(Vec_last(v));
+    Vec_erase(& v, (F) Str_del);
+}
+
 int main()
 {
     // test_Vec(1 << 25);
     // test_Str();
     // test_io();
-    test_sort(1 << 25);
+    // test_sort(199);
+    test_io2();
+
 }

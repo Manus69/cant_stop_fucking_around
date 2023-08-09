@@ -125,16 +125,8 @@ Vec Str_split(Str str, char x)
 }
 
 idx Str_cmp(Str lhs, Str rhs)
-{
-    idx len;
-    idx result;
-
-    len = min_(Str_len(lhs), Str_len(rhs));
-    result = strncmp(Str_cstr(lhs), Str_cstr(rhs), len);
-
-    return result ? result : 
-            Str_len(lhs) < Str_len(rhs) ? -1 : 
-            Str_len(lhs) > Str_len(rhs);    
+{ 
+    return strcmp(Str_cstr(lhs), Str_cstr(rhs));
 }
 
 idx cmp_Str(const void * lhs, const void * rhs)
