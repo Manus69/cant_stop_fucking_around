@@ -36,5 +36,9 @@ Str     Str_join_cstr(const char * cstrs[]);
 Slc     Str_slice(Str str, idx k, idx len);
 Slc     Str_as_Slc(Str str);
 Vec     Str_split(Str str, char x);
+idx     Str_cmp(Str lhs, Str rhs);
+idx     cmp_Str(const void * lhs, const void * rhs);
+        // __attribute__ ((pure, nonnull));
+
 
 #endif

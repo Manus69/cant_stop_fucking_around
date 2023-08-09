@@ -20,6 +20,21 @@ idx View_len(View view)
     return Slc_size(view.slc) / view.item_size;
 }
 
+bool View_empty(View view)
+{
+    return Slc_empty(view.slc);
+}
+
+idx View_size(View view)
+{
+    return Slc_size(view.slc);
+}
+
+idx View_item_size(View view)
+{
+    return view.item_size;
+}
+
 void * View_get(View view, idx k)
 {
     return Slc_get(view.slc, k * view.item_size);
@@ -65,6 +80,11 @@ View View_chop_front_check(View * view, idx len)
     return View_ctr(Slc_chop_front_check(& view->slc, len * view->item_size), view->item_size);
 }
 
+View View_chop_front_prob(View * view, idx len)
+{
+    return View_ctr(Slc_chop_front_prob(& view->slc, len * view->item_size), view->item_size);
+}
+
 idx View_find(View view, const void * item, Cmp cmp)
 {
     for (idx k = 0; k < View_len(view); k ++)
@@ -85,7 +105,12 @@ void * View_pop_front(View * view)
     void * ptr;
 
     ptr = View_first(* view);
-    View_shift(view, view->item_size);
+    View_shift(view, 1);
 
     return ptr;
+}
+
+void View_inject(View view, idx k, const void * src, idx len)
+{
+    Slc_inject(view.slc, k * view.item_size, src, len * view.item_size);
 }

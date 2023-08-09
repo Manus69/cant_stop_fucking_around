@@ -78,6 +78,13 @@ Slc Slc_chop_front_check(Slc * slc, idx size)
     return size < slc->size ? Slc_chop_front(slc, size) : Slc_chop_all(slc);
 }
 
+Slc Slc_chop_front_prob(Slc * slc, idx size)
+{
+    if (unlikely_(size >= slc->size)) return Slc_chop_all(slc);
+
+    return Slc_chop_front(slc, size);
+}
+
 idx Slc_find(Slc slc, byte x)
 {
     for (idx k = 0; k < slc.size; k ++)

@@ -6,5 +6,6 @@
 #define to0_(ptr, type) deref_(type) ptr = (type){}     
 #define likely_(x)      __builtin_expect((x), 1)
 #define unlikely_(x)    __builtin_expect((x), 0)
+#define min_(x, y)       ({typeof(x) _x = x; typeof(y) _y = y; _x < _y ? _x : _y;})
 
 #endif

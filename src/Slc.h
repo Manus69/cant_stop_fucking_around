@@ -29,6 +29,7 @@ Slc     Slc_slice(Slc slc, idx k, idx size);
 Slc     Slc_chop_front(Slc * slc, idx size);
 Slc     Slc_chop_all(Slc * slc);
 Slc     Slc_chop_front_check(Slc * slc, idx size);
+Slc     Slc_chop_front_prob(Slc * slc, idx size);
 idx     Slc_find(Slc slc, byte x);
 Slc     Slc_split_next(Slc * slc, byte x);
 

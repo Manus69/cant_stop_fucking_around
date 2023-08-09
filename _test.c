@@ -2,6 +2,7 @@
 #include "dbg.h"
 
 mem_put_gen(idx)
+mem_cmp_gen(idx)
 
 #include "Vec.h"
 void test_Vec(idx n)
@@ -41,11 +42,30 @@ void test_io()
     Vec_erase(& v, (F) Str_del);
 }
 
+#include "sort.h"
+void test_sort(idx n)
+{
+    Vec v = Vec_new_(idx);
+    for (idx k = 0; k < n; k ++)
+    {
+        Vec_push_(& v, n - k, idx);
+    }
+
+    View w = Vec_as_View(v);
+    // sort_insert(w, cmp_idx, put_idx);
+    sort_merge(w, cmp_idx, put_idx);
+    // View_map(w, dbg_idx);
+    dbg_idx(View_last(w));
+
+    Vec_del(& v);
+}
+
 //vec reserve
 //src folder
 int main()
 {
     // test_Vec(1 << 25);
     // test_Str();
-    test_io();
+    // test_io();
+    test_sort(1 << 25);
 }

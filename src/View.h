@@ -14,17 +14,22 @@ struct View
 View    View_ctr(Slc slc, idx item_size);
 View    View_from_ptr(void * ptr, idx len, idx item_size);
 idx     View_len(View view);
+idx     View_item_size(View view);
+idx     View_size(View view);
 void *  View_get(View view, idx k);
 void *  View_first(View view);
 void *  View_last(View view);
 void    View_map(View view, F f);
+bool    View_empty(View view);
 Slc     View_as_Slc(View view);
 View    View_view(View view, idx k, idx len);
 View    View_chop_front(View * view, idx len);
 View    View_chop_all(View * view);
 View    View_chop_front_check(View * view, idx len);
+View    View_chop_front_prob(View * view, idx len);
 idx     View_find(View view, const void * item, Cmp cmp);
 void    View_shift(View * view, idx len);
+void    View_inject(View view, idx k, const void * src, idx len);
 void *  View_pop_front(View * view);
 
 #endif
