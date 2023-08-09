@@ -1,10 +1,16 @@
 #include "mem.h"
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 void * mem_alloc0(idx size)
 {
-    return calloc(size, 1);
+    void * ptr;
+
+    ptr = calloc(size, 1);
+    assert(ptr);
+
+    return ptr;
 }
 
 void mem_del(void * ptr)
@@ -18,6 +24,7 @@ idx mem_extend(void ** ptr, idx size, idx extra_size)
 
     new_size = next_pow2_(size + extra_size);
     * ptr = realloc(* ptr, new_size);
+    assert(* ptr);
 
     return new_size;
 }

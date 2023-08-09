@@ -24,5 +24,7 @@ View    View_chop_front(View * view, idx len);
 View    View_chop_all(View * view);
 View    View_chop_front_check(View * view, idx len);
 idx     View_find(View view, const void * item, Cmp cmp);
+void    View_shift(View * view, idx len);
+void *  View_pop_front(View * view);
 
 #endif

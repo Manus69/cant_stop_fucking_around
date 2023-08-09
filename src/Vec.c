@@ -89,6 +89,11 @@ void Vec_erase(Vec * vec, F f)
     Vec_del(vec);
 }
 
+void Vec_reserve(Vec * vec, idx len)
+{
+    Buf_reserve(& vec->buf, len * vec->item_size);
+}
+
 void Vec_push(Vec * restrict vec, const void * restrict item, Put put)
 {
     Buf_push_item(& vec->buf, item, vec->item_size, put);

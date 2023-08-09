@@ -33,6 +33,6 @@ void    Vec_map(Vec vec, F f);
 void    Vec_del(Vec * vec);
 void    Vec_erase(Vec * vec, F f);
 void    Vec_push(Vec * restrict vec, const void * restrict item, Put put);
-
+void    Vec_reserve(Vec * vec, idx len);
 
 #endif

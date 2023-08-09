@@ -74,3 +74,18 @@ idx View_find(View view, const void * item, Cmp cmp)
 
     return NO_IDX;
 }
+
+void View_shift(View * view, idx len)
+{
+    Slc_shift(& view->slc, len * view->item_size);
+}
+
+void * View_pop_front(View * view)
+{
+    void * ptr;
+
+    ptr = View_first(* view);
+    View_shift(view, view->item_size);
+
+    return ptr;
+}
