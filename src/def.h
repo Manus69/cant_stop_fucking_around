@@ -8,6 +8,7 @@ typedef long    idx;
 typedef void    (* F)(void *);
 typedef void    (* cF)(const void *);
 typedef idx     (* Cmp)(const void *, const void *);
+typedef void    (* Swap)(void *, void *);
 typedef void    (* Put)(void *, const void *);
 
 #endif

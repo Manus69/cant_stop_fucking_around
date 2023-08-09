@@ -54,10 +54,12 @@ void test_sort(idx n)
     }
 
     View w = Vec_as_View(v);
-    sort_insert(w, cmp_idx, put_idx);
+    // sort_insert(w, cmp_idx, put_idx);
     // sort_merge(w, cmp_idx, put_idx);
-    View_map(w, dbg_idx);
-    // dbg_idx(View_last(w));
+
+    sort_quick(w, cmp_idx, swap_idx, put_idx);
+    // View_map(w, dbg_idx);
+    dbg_idx(View_last(w));
 
     Vec_del(& v);
 }
@@ -72,12 +74,13 @@ void test_io2()
     Vec_erase(& v, (F) Str_del);
 }
 
+//rng
 int main()
 {
     // test_Vec(1 << 25);
     // test_Str();
     // test_io();
-    // test_sort(199);
-    test_io2();
+    test_sort(1 << 25);
+    // test_io2();
 
 }

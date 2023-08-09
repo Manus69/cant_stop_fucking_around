@@ -8,5 +8,6 @@
 
 void sort_insert(View view, Cmp cmp, Put put);
 void sort_merge(View view, Cmp cmp, Put put);
+void sort_quick(View view, Cmp cmp, Swap swap, Put put);
 
 #endif
