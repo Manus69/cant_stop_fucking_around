@@ -27,6 +27,7 @@ void    Buf_inject(Buf buf, idx k, const void * src, idx size);
 void    Buf_extend(Buf * buf, idx size);
 void    Buf_extend0(Buf * buf, idx size);
 void    Buf_reserve(Buf * buf, idx size);
+void    Buf_reserve0(Buf * buf, idx size);
 void    Buf_push(Buf * restrict buf, const void * restrict src, idx size);
 void    Buf_push_item(Buf * restrict buf, const void * restrict item, idx size, Put put);
 void    Buf_reset(Buf * buf);

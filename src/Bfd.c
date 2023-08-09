@@ -17,7 +17,7 @@ void Bfd_del(Bfd * bfd)
 
 idx Bfd_len(Bfd bfd)
 {
-    return (Buf_index(bfd.buf) - 1) * __CHAR_BIT__; 
+    return Buf_index(bfd.buf) * __CHAR_BIT__; 
 }
 
 static inline byte * _byte(Bfd bfd, idx bit_idx)
@@ -43,4 +43,9 @@ void Bfd_clear(Bfd bfd, idx k)
 void Bfd_toggle(Bfd bfd, idx k)
 {
     deref_(byte) _byte(bfd, k) ^= (1u << (k % __CHAR_BIT__));
+}
+
+void Bfd_set_check(Bfd * bfd, idx k)
+{
+    
 }

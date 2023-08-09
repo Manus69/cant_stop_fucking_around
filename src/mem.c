@@ -18,15 +18,18 @@ void mem_del(void * ptr)
     free(ptr);
 }
 
-idx mem_extend(void ** ptr, idx size, idx extra_size)
+idx mem_resize(void ** ptr, idx size)
 {
-    idx new_size;
-
-    new_size = next_pow2_(size + extra_size);
-    * ptr = realloc(* ptr, new_size);
+    size = next_pow2_(size);
+    * ptr = realloc(* ptr, size);
     assert(* ptr);
 
-    return new_size;
+    return size;
+}
+
+idx mem_extend(void ** ptr, idx size, idx extra_size)
+{
+    return mem_resize(ptr, size + extra_size);
 }
 
 idx mem_extend0(void ** ptr, idx size, idx extra_size)

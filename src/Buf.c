@@ -91,6 +91,11 @@ void Buf_reserve(Buf * buf, idx size)
     if (Buf_capacity(* buf) < size) Buf_extend(buf, size);
 }
 
+void Buf_reserve0(Buf * buf, idx size)
+{
+    if (Buf_capacity(* buf) < size) Buf_extend0(buf, size);
+}
+
 void Buf_push(Buf * restrict buf, const void * restrict src, idx size)
 {
     if (unlikely_(Buf_capacity(* buf) <= size)) Buf_extend(buf, size);
