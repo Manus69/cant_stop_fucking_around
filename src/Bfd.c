@@ -36,6 +36,11 @@ bool Bfd_bit(Bfd bfd, idx k)
     return (deref_(byte) _byte(bfd, k)) & _bit(k); 
 }
 
+bool Bfd_bit_check(Bfd bfd, idx k)
+{
+    return k < Bfd_len(bfd) ? Bfd_bit(bfd, k) : 0;
+}
+
 void Bfd_set(Bfd bfd, idx k)
 {
     deref_(byte) _byte(bfd, k) |= _bit(k);
@@ -48,10 +53,46 @@ void Bfd_clear(Bfd bfd, idx k)
 
 void Bfd_toggle(Bfd bfd, idx k)
 {
-    deref_(byte) _byte(bfd, k) ^= (1u << (k % __CHAR_BIT__));
+    deref_(byte) _byte(bfd, k) ^= _bit(k);
+}
+
+void Bfd_resize(Bfd * bfd, idx n_bits)
+{
+    Blk_resize0(& bfd->blk, n_bits / __CHAR_BIT__);
 }
 
 void Bfd_set_check(Bfd * bfd, idx k)
 {
+    if (unlikely_(k >= Bfd_len(* bfd))) Bfd_resize(bfd, k + 1);
 
+    Bfd_set(* bfd, k);
 }
+
+#define BFD_DC (1)
+Bfd Bfd_from_cstr(const char * cstr)
+{
+    Bfd bfd;
+
+    bfd = Bfd_ctr(Blk_new0(BFD_DC));
+    for (idx k = 0; cstr[k]; k ++)
+    {
+        if (cstr[k] == '1') Bfd_set_check(& bfd, k);
+    }
+
+    return bfd;
+}
+
+Str Bfd_to_Str(Bfd bfd)
+{
+    Blk     blk;
+    byte    bytes[] = {'0', '1'};
+
+    blk = Blk_new0(Bfd_len(bfd) + 1);
+    for (idx k = 0; k < Bfd_len(bfd); k ++)
+    {
+        Blk_set_byte(blk, k, bytes[Bfd_bit(bfd, k)]);
+    }
+
+    return Str_ctr(Buf_ctr(blk, Bfd_len(bfd)));
+}
+

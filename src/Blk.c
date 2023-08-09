@@ -73,3 +73,16 @@ void Blk_resize(Blk * blk, idx size)
 {
     blk->size = mem_resize(& blk->data, size);
 }
+
+void Blk_resize0(Blk * blk, idx size)
+{
+    idx current_size;
+
+    current_size = blk->size;
+    blk->size = mem_resize(& blk->data, size);
+
+    if (likely_(blk->size > current_size))
+    {
+        memset(Blk_get(* blk, current_size), 0, blk->size - current_size);
+    }
+}

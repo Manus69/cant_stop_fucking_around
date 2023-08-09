@@ -64,6 +64,11 @@ char * Str_get(Str str, idx k)
     return Buf_get(str.buf, k);
 }
 
+void Str_set(Str str, idx k, byte x)
+{
+    deref_(byte) Str_get(str, k) = x;
+}
+
 void Str_append_cstr_len(Str * restrict str, const char * restrict cstr, idx len)
 {
     Buf_push(& str->buf, cstr, len);

@@ -23,5 +23,7 @@ void    Blk_inject(Blk blk, idx k, const void * src, idx size);
 void    Blk_extend(Blk * blk, idx size);
 void    Blk_extend0(Blk * blk, idx size);
 void    Blk_set_byte(Blk blk, idx k, byte x);
+void    Blk_resize0(Blk * blk, idx size);
+void    Blk_resize(Blk * blk, idx size);
 
 #endif

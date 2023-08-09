@@ -32,6 +32,7 @@ void    Str_append_cstr_len(Str * restrict str, const char * restrict cstr, idx 
 void    Str_append_cstr(Str * restrict str, const char * restrict cstr);
 void    Str_append_Slc(Str * str, Slc slc);
 void    Str_append(Str * lhs, Str rhs);
+void    Str_set(Str str, idx k, byte x);
 Str     Str_join_cstr(const char * cstrs[]);
 Slc     Str_slice(Str str, idx k, idx len);
 Slc     Str_as_Slc(Str str);
