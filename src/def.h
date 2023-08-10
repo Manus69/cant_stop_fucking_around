@@ -4,6 +4,7 @@
 #define NO_IDX (-1L)
 
 typedef unsigned char   byte;
+typedef unsigned long   ulong;
 typedef long            idx;
 typedef void            (* F)(void *);
 typedef void            (* cF)(const void *);

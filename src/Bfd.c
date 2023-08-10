@@ -9,6 +9,11 @@ Bfd Bfd_ctr(Blk blk)
     };
 }
 
+Bfd Bfd_new(idx len)
+{
+    Bfd_ctr(Blk_new0(len / __CHAR_BIT__ + 1));
+}
+
 void Bfd_del(Bfd * bfd)
 {
     Blk_del(& bfd->blk);
@@ -66,6 +71,14 @@ void Bfd_set_check(Bfd * bfd, idx k)
     if (unlikely_(k >= Bfd_len(* bfd))) Bfd_resize(bfd, k + 1);
 
     Bfd_set(* bfd, k);
+}
+
+void Bfd_complement(Bfd bfd)
+{
+    for (idx k = 0; k < Blk_size(bfd.blk); k ++)
+    {
+        Blk_set_byte(bfd.blk, k, ~ (deref_(byte) Blk_get(bfd.blk, k)));
+    }
 }
 
 #define BFD_DC (1)
