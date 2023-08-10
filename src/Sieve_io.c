@@ -1,5 +1,6 @@
 #include "Sieve.h"
 #include "io.h"
+#include "dbg.h"
 
 idx Sieve_to_file(Sieve sieve, const char * name)
 {
@@ -33,6 +34,7 @@ Sieve Sieve_from_file(const char * name)
     Sieve   sieve;
 
     buf = io_read(name);
+    Buf_reset(& buf);
     sieve = Sieve_decode(& buf);
 
     Buf_del(& buf);

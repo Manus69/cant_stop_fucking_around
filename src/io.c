@@ -17,6 +17,23 @@ Buf io_read_fd(int fd)
     return buf;
 }
 
+#define READ_SIZE (1 << 12)
+Buf io_read_fd_buffered(int fd)
+{
+    Buf     buf;
+    byte    buffer[READ_SIZE] = {};
+    idx     read_size;
+
+    buf = Buf_new_empty();
+
+    while ((read_size = read(fd, buffer, READ_SIZE)) > 0)
+    {
+        Buf_push(& buf, buffer, read_size);
+    }
+
+    return buf;
+}
+
 Buf io_read(const char * name)
 {
     int fd;

@@ -76,18 +76,3 @@ bool Sieve_is_prime(Sieve sieve, ulong n)
 {
     return Bfd_bit(sieve.bfd, n);
 }
-
-Vec Sieve_primes_lt(Sieve sieve, ulong lt)
-{
-    Vec primes;
-
-    primes = Vec_new_(ulong);
-    for (ulong n = 2; (n < (ulong) Sieve_len(sieve)) && (n < lt); n ++)
-    {
-        if (Sieve_is_prime(sieve, n)) Vec_push_(& primes, n, ulong);
-    }
-
-    return primes;
-}
-
-
