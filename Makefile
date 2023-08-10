@@ -1,13 +1,17 @@
 cc = gcc
 flags = -Wall -Wextra -g -fsanitize=address -fsanitize=undefined
 
-flags_release = -Wall -Wextra -Ofast -flto -funroll-loops -D NDEBUG \
--funsafe-math-optimizations \
+flags_release = -Wall -Wextra -Winline \
+-Ofast \
+-flto \
+-funroll-loops \
+-D NDEBUG \
 -fprefetch-loop-arrays \
 -ffast-math \
 -fpeel-loops \
 -march=native -mtune=native \
--Winline \
+-funsafe-math-optimizations \
+-g -fsanitize=address -fsanitize=undefined \
 
 src_dir = ./src
 obj_dir = ./obj

@@ -12,3 +12,8 @@ void dbg_Str(void * str)
     printf("'%s'", Str_cstr(deref_(Str) str));
     nl_;
 }
+
+void dbg_ulong(void * n)
+{
+    printf("%lu ", deref_(ulong) n);
+}

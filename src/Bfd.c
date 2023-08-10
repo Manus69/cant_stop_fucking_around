@@ -11,7 +11,7 @@ Bfd Bfd_ctr(Blk blk)
 
 Bfd Bfd_new(idx len)
 {
-    Bfd_ctr(Blk_new0(len / __CHAR_BIT__ + 1));
+    return Bfd_ctr(Blk_new0(len / __CHAR_BIT__ + 1));
 }
 
 void Bfd_del(Bfd * bfd)

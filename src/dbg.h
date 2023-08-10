@@ -8,5 +8,6 @@
 
 void dbg_idx(void * x);
 void dbg_Str(void * str);
+void dbg_ulong(void * n);
 
 #endif
