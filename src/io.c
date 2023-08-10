@@ -17,6 +17,15 @@ Buf io_read_fd(int fd)
     return buf;
 }
 
+Buf io_read(const char * name)
+{
+    int fd;
+
+    if ((fd = open(name, O_RDONLY)) < 0) return Buf_new_empty();
+
+    return io_read_fd(fd);
+}
+
 Str io_read_txt_fd(int fd)
 {
     return Str_ctr(io_read_fd(fd));
@@ -43,7 +52,7 @@ Vec io_read_txt_by_line(const char * name)
     return lines;
 }
 
-idx io_create_file(const char * name)
+int io_create_file(const char * name)
 {
     return creat(name, 0777);
 }

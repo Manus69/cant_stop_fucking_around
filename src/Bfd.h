@@ -25,6 +25,7 @@ void    Bfd_set_check(Bfd * bfd, idx k);
 void    Bfd_complement(Bfd bfd);
 Bfd     Bfd_from_cstr(const char * cstr);
 Str     Bfd_to_Str(Bfd bfd);
+Slc     Bfd_as_Slc(Bfd bfd);
 
 
 #endif

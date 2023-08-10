@@ -67,6 +67,11 @@ idx Sieve_len(Sieve sieve)
     return Bfd_len(sieve.bfd);
 }
 
+Slc Sieve_as_Slc(Sieve sieve)
+{
+    return Bfd_as_Slc(sieve.bfd);
+}
+
 bool Sieve_is_prime(Sieve sieve, ulong n)
 {
     return Bfd_bit(sieve.bfd, n);

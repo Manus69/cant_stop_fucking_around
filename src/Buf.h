@@ -13,6 +13,7 @@ struct Buf
 
 Buf     Buf_ctr(Blk blk, idx index);
 Buf     Buf_new(idx size);
+Buf     Buf_new_empty(void);
 idx     Buf_size(Buf buf);
 idx     Buf_index(Buf buf);
 idx     Buf_capacity(Buf buf);

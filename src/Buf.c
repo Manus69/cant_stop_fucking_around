@@ -1,6 +1,8 @@
 #include "Buf.h"
 #include "macro.h"
 
+#define BUF_DC (1 << 3)
+
 Buf Buf_ctr(Blk blk, idx index)
 {
     return (Buf)
@@ -13,6 +15,11 @@ Buf Buf_ctr(Blk blk, idx index)
 Buf Buf_new(idx size)
 {
     return Buf_ctr(Blk_new0(size), 0);
+}
+
+Buf Buf_new_empty(void)
+{
+    return Buf_new(BUF_DC);
 }
 
 void Buf_del(Buf * buf)

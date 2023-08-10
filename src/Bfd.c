@@ -25,6 +25,11 @@ idx Bfd_len(Bfd bfd)
     return Blk_size(bfd.blk) * __CHAR_BIT__; 
 }
 
+Slc Bfd_as_Slc(Bfd bfd)
+{
+    return Blk_as_Slc(bfd.blk);
+}
+
 static inline byte * _byte(Bfd bfd, idx bit_idx)
 {
     return Blk_get(bfd.blk, bit_idx / __CHAR_BIT__);
